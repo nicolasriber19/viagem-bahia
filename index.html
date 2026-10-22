@@ -1,0 +1,352 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Bahia em Janeiro</title>
+<meta name="description" content="Cotação de hospedagem para 5 pessoas de 05 a 11 de janeiro de 2027 em Morro de São Paulo, Prado e Porto Seguro.">
+<meta property="og:title" content="Bahia em Janeiro · Cotação da viagem">
+<meta property="og:description" content="Airbnb e pousadas em Morro de São Paulo, Prado e Porto Seguro · 05 a 11/01/2027 · 5 pessoas">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#0b4f6c">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Shrikhand&family=Figtree:wght@400;500;600;700;800&display=swap">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='26' r='16' fill='%23ffd23f'/%3E%3Cpath d='M0 44c8-6 16-6 24 0s16 6 24 0 12-5 16-3v23H0z' fill='%231b8a9e'/%3E%3C/svg%3E">
+<style>
+/* Layout: capa de praia com o título em letra de cartão-postal, faixa de fitas do Bonfim, três cartões-postais de atalho,
+   depois uma seção por destino com carimbo de "a partir de" e os cards de hospedagem. Tema único, claro, de sol. */
+:root {
+  color-scheme: light;
+  --paper: #fffdf8;
+  --ink: #0b2545;
+  --muted: #5a6b7d;
+  --line: #e9e3d6;
+  --sea-deep: #0b4f6c;
+  --sea: #1b8a9e;
+  --sea-light: #7fd1c7;
+  --sun: #ffd23f;
+  --morro: #0e8c93;
+  --prado: #2f8a46;
+  --porto: #e0553b;
+  --airbnb: #d23f6a;
+  --hotel: #2453a6;
+  --display: "Shrikhand", "Georgia", serif;
+  --body: "Figtree", "Segoe UI", system-ui, -apple-system, sans-serif;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0; background: var(--paper); color: var(--ink);
+  font-family: var(--body); font-size: 16px; line-height: 1.55;
+  padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+a { color: inherit; }
+.num { font-variant-numeric: tabular-nums; }
+.gutter {
+  max-width: 1120px; margin: 0 auto;
+  padding-left: max(18px, env(safe-area-inset-left, 0px));
+  padding-right: max(18px, env(safe-area-inset-right, 0px));
+}
+:focus-visible { outline: 3px solid var(--sun); outline-offset: 3px; border-radius: 6px; }
+
+/* ---------- Capa ---------- */
+.hero {
+  position: relative; overflow: hidden; color: #fff;
+  background: linear-gradient(180deg, var(--sea-deep) 0%, var(--sea) 58%, var(--sea-light) 100%);
+}
+.hero .gutter { position: relative; z-index: 2; padding-block: 56px 150px; display: grid; gap: 18px; }
+.sun {
+  position: absolute; z-index: 1; right: max(6vw, 24px); top: 48px;
+  width: clamp(110px, 20vw, 220px); aspect-ratio: 1; border-radius: 50%;
+  background: radial-gradient(circle at 40% 40%, #fff3b0, var(--sun) 60%, #ffb703);
+  box-shadow: 0 0 80px 20px rgba(255, 210, 63, .35);
+}
+.kicker { font-weight: 800; letter-spacing: .14em; text-transform: uppercase; font-size: 13px; opacity: .9; }
+.hero h1 {
+  margin: 0; font-family: var(--display); font-weight: 400;
+  font-size: clamp(64px, 15vw, 168px); line-height: .9; letter-spacing: .01em;
+  text-shadow: 0 6px 0 rgba(11, 37, 69, .25);
+}
+.hero h1 small { display: block; font-size: .32em; line-height: 1.2; margin-top: 10px; text-shadow: none; }
+.ticket {
+  display: inline-flex; flex-wrap: wrap; align-items: stretch; width: fit-content; max-width: 100%;
+  background: #fff; color: var(--ink); border-radius: 14px; overflow: hidden;
+  box-shadow: 0 10px 30px rgba(11, 37, 69, .25);
+}
+.ticket div { padding: 10px 18px; display: grid; gap: 0; border-right: 2px dashed var(--line); }
+.ticket div:last-child { border-right: 0; }
+.ticket small { font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+.ticket b { font-size: 20px; font-weight: 800; }
+.hero p.lede { max-width: 56ch; margin: 4px 0 0; font-size: 17px; opacity: .95; }
+@media (max-width: 520px) {
+  .hero .gutter { padding-block: 40px 130px; }
+  .sun { width: 84px; top: 70px; right: 14px; opacity: .9; }
+  .ticket { display: grid; grid-template-columns: repeat(4, auto); }
+  .ticket div { padding: 8px 10px; }
+  .ticket b { font-size: 17px; }
+  .ticket small { font-size: 10px; letter-spacing: .06em; }
+}
+
+.waves { position: absolute; left: 0; right: 0; bottom: -1px; z-index: 1; height: 120px; }
+.waves svg { position: absolute; bottom: 0; width: 200%; height: 100%; }
+.waves .w1 { animation: drift 14s linear infinite; opacity: .5; }
+.waves .w2 { animation: drift 9s linear infinite reverse; }
+@keyframes drift { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+/* ---------- Fitas do Bonfim ---------- */
+.fitas { display: grid; grid-template-columns: repeat(7, 1fr); height: 12px; }
+.fitas span:nth-child(1) { background: #e63946; }
+.fitas span:nth-child(2) { background: #f4a261; }
+.fitas span:nth-child(3) { background: var(--sun); }
+.fitas span:nth-child(4) { background: #2a9d8f; }
+.fitas span:nth-child(5) { background: #3a86ff; }
+.fitas span:nth-child(6) { background: #9b5de5; }
+.fitas span:nth-child(7) { background: #ff70a6; }
+
+/* ---------- Cartões-postais (atalhos) ---------- */
+.postcards { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 22px; padding-block: 44px 8px; }
+.postcard {
+  --c: var(--morro);
+  position: relative; display: grid; gap: 6px; text-decoration: none;
+  background: #fff; border: 1px solid var(--line); border-radius: 6px;
+  padding: 20px 22px 18px; box-shadow: 0 8px 24px rgba(11, 37, 69, .08);
+  transform: rotate(var(--r, -1.2deg)); transition: transform .25s ease, box-shadow .25s ease;
+}
+.postcard:nth-child(2) { --r: .9deg; }
+.postcard:nth-child(3) { --r: -.6deg; }
+.postcard:hover { transform: rotate(0) translateY(-4px); box-shadow: 0 14px 30px rgba(11, 37, 69, .14); }
+.postcard::after {
+  content: ""; position: absolute; top: 14px; right: 14px; width: 44px; height: 52px;
+  border: 2px dashed var(--c); border-radius: 4px; opacity: .55;
+}
+.postcard .pc-from { font-size: 12px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+.postcard .pc-name { font-family: var(--display); font-size: 30px; line-height: 1.05; color: var(--c); padding-right: 56px; }
+.postcard .pc-price { font-size: 15px; }
+.postcard .pc-price b { font-size: 22px; font-weight: 800; }
+
+/* ---------- Barra de filtro ---------- */
+.filterbar {
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20;
+  background: rgba(255, 253, 248, .94); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--line);
+}
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 30; background: var(--paper); }
+.filterbar .gutter { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; padding-block: 10px; }
+.filterbar .lbl { font-size: 14px; color: var(--muted); font-weight: 600; margin-right: 2px; }
+.chip {
+  font: inherit; font-size: 14px; font-weight: 700; cursor: pointer;
+  border: 1.5px solid var(--ink); background: transparent; color: var(--ink);
+  border-radius: 999px; padding: 6px 14px;
+}
+.chip[aria-pressed="true"] { background: var(--ink); color: var(--paper); }
+.jump { margin-left: auto; display: flex; gap: 14px; font-size: 14px; font-weight: 700; }
+.jump a { text-decoration: none; border-bottom: 2px solid transparent; }
+.jump a:hover { border-color: currentColor; }
+@media (max-width: 640px) { .jump { display: none; } }
+
+/* ---------- Destinos ---------- */
+.dest { --c: var(--morro); padding-block: 56px 8px; scroll-margin-top: 64px; }
+.dest-head { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 18px 28px; align-items: center; margin-bottom: 26px; }
+.dest h2 { margin: 0; font-family: var(--display); font-weight: 400; font-size: clamp(40px, 8vw, 76px); line-height: .95; color: var(--c); text-wrap: balance; }
+.dest .region { font-weight: 800; letter-spacing: .12em; text-transform: uppercase; font-size: 13px; color: var(--muted); margin-bottom: 8px; }
+.dest .about { margin: 12px 0 0; max-width: 62ch; color: var(--muted); }
+.stamp {
+  width: 132px; height: 132px; border-radius: 50%; display: grid; place-content: center; text-align: center;
+  border: 3px double var(--c); color: var(--c); transform: rotate(-10deg); gap: 0; line-height: 1.1;
+  background: color-mix(in srgb, var(--c) 7%, #fff);
+}
+.stamp small { font-size: 11px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
+.stamp b { font-size: 26px; font-weight: 800; }
+@media (max-width: 560px) { .dest-head { grid-template-columns: 1fr; } .stamp { width: 110px; height: 110px; } .stamp b { font-size: 21px; } }
+
+.group { display: grid; gap: 12px; margin-bottom: 28px; }
+.group h3 { margin: 0; font-size: 13px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); display: flex; align-items: center; gap: 10px; }
+.group h3::after { content: ""; flex: 1; height: 1px; background: var(--line); }
+.cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 16px; }
+
+.card {
+  background: #fff; border: 1px solid var(--line); border-radius: 16px; padding: 18px;
+  display: grid; gap: 12px; align-content: start; min-width: 0;
+  box-shadow: 0 2px 0 rgba(11, 37, 69, .04);
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.card:hover { transform: translateY(-3px); box-shadow: 0 12px 26px rgba(11, 37, 69, .10); }
+.card-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; }
+.card .name { font-weight: 800; font-size: 17px; line-height: 1.3; }
+.tag { font-size: 12px; font-weight: 800; border-radius: 6px; padding: 3px 8px; white-space: nowrap; color: #fff; }
+.tag.airbnb { background: var(--airbnb); }
+.tag.hotel { background: var(--hotel); }
+.rating { font-size: 14px; font-weight: 700; }
+.details { margin: 0; color: var(--muted); font-size: 14px; }
+.price { border-top: 2px dashed var(--line); padding-top: 12px; display: grid; gap: 2px; }
+.price .pp { font-size: 28px; font-weight: 800; color: var(--c); line-height: 1.1; }
+.price .pp span { font-size: 14px; font-weight: 600; color: var(--muted); }
+.price .rest { font-size: 14px; color: var(--muted); }
+.btn {
+  display: flex; justify-content: center; align-items: center; gap: 6px;
+  text-decoration: none; font-weight: 800; font-size: 15px; color: #fff;
+  border-radius: 12px; padding: 12px 14px;
+}
+.btn.airbnb { background: var(--airbnb); }
+.btn.hotel { background: var(--hotel); }
+.btn:hover { filter: brightness(1.08); }
+
+/* ---------- Rodapé ---------- */
+.notes { padding-block: 40px 24px; }
+.notes-box { background: #fff; border: 1px solid var(--line); border-radius: 16px; padding: 22px 24px; display: grid; gap: 12px; }
+.notes h2 { margin: 0; font-size: 22px; font-weight: 800; }
+.notes ul { margin: 0; padding-left: 20px; display: grid; gap: 8px; color: var(--muted); max-width: 78ch; }
+.notes strong { color: var(--ink); }
+footer { padding-block: 10px 40px; color: var(--muted); font-size: 14px; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .waves .w1, .waves .w2 { animation: none; }
+  .postcard, .card { transition: none; }
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="sun" aria-hidden="true"></div>
+  <div class="gutter">
+    <span class="kicker">Viagem em família · cotação de hospedagem</span>
+    <h1>Bahia<small>em janeiro de 2027</small></h1>
+    <div class="ticket num" role="list" aria-label="Dados da viagem">
+      <div role="listitem"><small>Check-in</small><b>05 jan</b></div>
+      <div role="listitem"><small>Check-out</small><b>11 jan</b></div>
+      <div role="listitem"><small>Noites</small><b>6</b></div>
+      <div role="listitem"><small>Pessoas</small><b>5</b></div>
+    </div>
+    <p class="lede">Três destinos no litoral baiano, cada um com 3 opções de Airbnb e 3 de pousada ou hotel. Os preços são o total das 6 noites, com taxas, divididos entre as 5 pessoas.</p>
+  </div>
+  <div class="waves" aria-hidden="true">
+    <svg class="w1" viewBox="0 0 2400 120" preserveAspectRatio="none"><path fill="#fffdf8" d="M0 70 C200 30 400 110 600 70 S1000 30 1200 70 S1600 110 1800 70 S2200 30 2400 70 V120 H0 Z"/></svg>
+    <svg class="w2" viewBox="0 0 2400 120" preserveAspectRatio="none"><path fill="#fffdf8" d="M0 90 C150 60 450 115 600 90 S1050 60 1200 90 S1650 115 1800 90 S2250 60 2400 90 V120 H0 Z"/></svg>
+  </div>
+</header>
+
+<div class="fitas" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+
+<nav class="gutter postcards" id="postcards" aria-label="Destinos"></nav>
+
+<div class="filterbar">
+  <div class="gutter" role="group" aria-label="Filtrar hospedagens">
+    <span class="lbl">Mostrar:</span>
+    <button class="chip" id="f-all" data-filter="all" aria-pressed="true">Tudo</button>
+    <button class="chip" id="f-airbnb" data-filter="airbnb" aria-pressed="false">Airbnb</button>
+    <button class="chip" id="f-hotel" data-filter="hotel" aria-pressed="false">Pousadas e hotéis</button>
+    <span class="jump"><a href="#morro">Morro</a><a href="#prado">Prado</a><a href="#porto">Porto Seguro</a></span>
+  </div>
+</div>
+
+<main id="destinos"></main>
+
+<section class="gutter notes">
+  <div class="notes-box">
+    <h2>Antes de reservar</h2>
+    <ul>
+      <li><strong>Camas no Airbnb:</strong> a busca mostra quantas camas o lugar tem, mas não se são de casal ou de solteiro. Abra o anúncio e confira se tem uma cama de casal e lugar para as outras 3 pessoas.</li>
+      <li><strong>Notas:</strong> no Airbnb a nota vai até 5 e no Booking vai até 10. O Booking não mostrou nota para as pousadas de Prado.</li>
+      <li><strong>Café da manhã:</strong> todas as pousadas e hotéis listados incluem café. Os Airbnbs não incluem.</li>
+      <li><strong>Preços:</strong> pesquisados em 22/10/2026. Para janeiro eles mudam rápido, então confirme o valor no site antes de fechar.</li>
+      <li><strong>Divisão:</strong> o preço por pessoa divide o total igualmente entre 5. Se o casal pagar como uma unidade, o casal fica com 2/5 do total e cada uma das outras 3 pessoas com 1/5.</li>
+    </ul>
+  </div>
+</section>
+
+<footer class="gutter">Cada botão abre o anúncio no Airbnb ou no Booking com as datas e os 5 hóspedes já preenchidos.</footer>
+
+<script>
+const NIGHTS = 6, PEOPLE = 5;
+const AIRBNB_Q = "?check_in=2027-01-05&check_out=2027-01-11&adults=5";
+const BOOKING_Q = "?checkin=2027-01-05&checkout=2027-01-11&group_adults=5&no_rooms=2&group_children=0";
+
+const DESTS = [
+  { id: "morro", name: "Morro de São Paulo", color: "var(--morro)", region: "Ilha de Tinharé · Cairu",
+    about: "Vila sem carros numa ilha, com praias numeradas da Primeira à Quarta Praia. A chegada é de barco ou catamarã, saindo de Salvador ou de Valença.",
+    items: [
+    { t: "airbnb", name: "Apartamento Novo", id: "25946847", total: 4800, rating: "★ 4,8 · 15 avaliações", details: "2 quartos · 5 camas · 2 banheiros" },
+    { t: "airbnb", name: "Casa da Lis (Segunda Praia)", id: "1201669806079898367", total: 4851, rating: "★ 4,79 · 58 avaliações", details: "2 quartos · 4 camas · 1 banheiro" },
+    { t: "airbnb", name: "Casa Maré 3, condomínio com piscina", id: "46654356", total: 5815, rating: "★ 4,83 · 75 avaliações", details: "Segunda Praia · 2 quartos · 4 camas · 1 banheiro" },
+    { t: "hotel", name: "Pousada Caravelas", slug: "pousada-caravelas-morro-de-sapso-paulo", total: 4715, rating: "9,0/10 · 374 avaliações", details: "Quarto de casal + quarto triplo · café da manhã · cancelamento grátis · 200 m do centro" },
+    { t: "hotel", name: "Pousada Linda Flor", slug: "pousada-linda-serena", total: 6264, rating: "9,3/10 · 139 avaliações", details: "2 quartos triplos · café da manhã · 0,8 km do centro" },
+    { t: "hotel", name: "Pousada Borboleta", slug: "pousada-borboleta", total: 7588, rating: "9,3/10 · 755 avaliações", details: "2 quartos · café da manhã · cancelamento grátis · 0,8 km do centro" },
+  ]},
+  { id: "prado", name: "Prado", color: "var(--prado)", region: "Costa das Baleias · sul da Bahia",
+    about: "Cidade pequena e tranquila, com praias largas, falésias e coqueirais. Fica perto de Cumuruxatiba.",
+    items: [
+    { t: "airbnb", name: "Casa Verde Mar", id: "780241260816344488", total: 3452, rating: "★ 4,92 · 26 avaliações", details: "3 quartos · 6 camas · 3 banheiros" },
+    { t: "airbnb", name: "Apartamento Residencial 2 de Julho", id: "1508718602453512286", total: 4400, rating: "★ 5,0 · 22 avaliações", details: "2 quartos · 4 camas · 2,5 banheiros" },
+    { t: "airbnb", name: "Casa Praia Prado Bahia", id: "810351274027438471", total: 5857, rating: "★ 4,98 · 40 avaliações", details: "2 quartos · 5 camas · 3,5 banheiros" },
+    { t: "hotel", name: "Pousada Tropical", slug: "pousada-tropical-prado1", total: 6300, rating: "Sem nota no Booking", details: "Quarto triplo + quádruplo · café da manhã · piscina · 250 m da praia" },
+    { t: "hotel", name: "Pousada Lagoa Pequena", slug: "pousada-lagoa-pequena", total: 6510, rating: "Sem nota no Booking", details: "Quarto de casal + triplo · café da manhã · cancelamento grátis · piscina · 150 m da praia" },
+    { t: "hotel", name: "Pousada Quintal da Praça", slug: "pousada-quintal-da-praca", total: 6851, rating: "Sem nota no Booking", details: "Quarto triplo + quádruplo · café da manhã · cancelamento grátis · 0,7 km do centro" },
+  ]},
+  { id: "porto", name: "Porto Seguro", color: "var(--porto)", region: "Costa do Descobrimento",
+    about: "Onde as caravelas de Cabral chegaram em 1500. Tem a orla de Taperapuã, a Passarela do Álcool, e Arraial d'Ajuda e Trancoso logo ao lado.",
+    items: [
+    { t: "airbnb", name: "Apartamento em condomínio arborizado", id: "754988211710274351", total: 3689, rating: "★ 4,82 · 22 avaliações", details: "2 quartos · 5 camas · 2 banheiros" },
+    { t: "airbnb", name: "Casa no Paraíso dos Pataxós", id: "47025970", total: 5077, rating: "★ 4,91 · 70 avaliações", details: "2 quartos · 5 camas · 2 banheiros" },
+    { t: "airbnb", name: "Apartamento 3 quartos", id: "1402366308454228715", total: 5310, rating: "★ 5,0 · 29 avaliações", details: "3 quartos · 5 camas · 2 banheiros" },
+    { t: "hotel", name: "Marlim Smart Hotel", slug: "marlim-porto", total: 5130, rating: "7,0/10 · 848 avaliações", details: "Quarto de casal + triplo · café da manhã · 350 m do centro · 550 m da praia" },
+    { t: "hotel", name: "Sarana Praia Hotel", slug: "sarana-praia", total: 8557, rating: "7,9/10 · 607 avaliações", details: "2 apartamentos · café da manhã · cancelamento grátis" },
+    { t: "hotel", name: "Hotel Bem Brasil", slug: "bem-brasil", total: 9173, rating: "8,7/10 · 1.438 avaliações", details: "Quarto de casal + quarto para 3 · café da manhã · cancelamento grátis · 100 m da praia" },
+  ]},
+];
+
+const brl = v => v.toLocaleString("pt-BR", { style: "currency", currency: "BRL", maximumFractionDigits: 0 });
+const link = it => it.t === "airbnb"
+  ? `https://www.airbnb.com.br/rooms/${it.id}${AIRBNB_Q}`
+  : `https://www.booking.com/hotel/br/${it.slug}.pt-br.html${BOOKING_Q}`;
+const esc = s => s.replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const cheapest = d => Math.min(...d.items.map(i => i.total)) / PEOPLE;
+
+function card(it) {
+  const pp = it.total / PEOPLE;
+  return `<article class="card">
+    <div class="card-top"><span class="name">${esc(it.name)}</span><span class="tag ${it.t}">${it.t === "airbnb" ? "Airbnb" : "Pousada / hotel"}</span></div>
+    <div class="rating">${esc(it.rating)}</div>
+    <p class="details">${esc(it.details)}</p>
+    <div class="price num">
+      <div class="pp">${brl(pp)} <span>por pessoa</span></div>
+      <div class="rest">${brl(it.total)} no total · ${brl(pp / NIGHTS)} por pessoa/noite</div>
+    </div>
+    <a class="btn ${it.t}" href="${link(it)}" target="_blank" rel="noopener">${it.t === "airbnb" ? "Ver no Airbnb" : "Ver no Booking"} ↗</a>
+  </article>`;
+}
+
+document.getElementById("postcards").innerHTML = DESTS.map(d => `
+  <a class="postcard" href="#${d.id}" style="--c:${d.color}">
+    <span class="pc-from">Lembranças de</span>
+    <span class="pc-name">${d.name}</span>
+    <span class="pc-price num">a partir de <b>${brl(cheapest(d))}</b> por pessoa</span>
+  </a>`).join("");
+
+document.getElementById("destinos").innerHTML = DESTS.map(d => {
+  const air = d.items.filter(i => i.t === "airbnb"), hot = d.items.filter(i => i.t === "hotel");
+  return `<section class="dest gutter" id="${d.id}" style="--c:${d.color}">
+    <div class="dest-head">
+      <div>
+        <div class="region">${d.region}</div>
+        <h2>${d.name}</h2>
+        <p class="about">${d.about}</p>
+      </div>
+      <div class="stamp num" aria-label="A partir de ${brl(cheapest(d))} por pessoa"><small>a partir de</small><b>${brl(cheapest(d))}</b><small>por pessoa</small></div>
+    </div>
+    <div class="group" data-group="airbnb"><h3>Airbnb</h3><div class="cards">${air.map(card).join("")}</div></div>
+    <div class="group" data-group="hotel"><h3>Pousadas e hotéis · com café da manhã</h3><div class="cards">${hot.map(card).join("")}</div></div>
+  </section>`;
+}).join("");
+
+document.querySelectorAll(".chip").forEach(btn => btn.addEventListener("click", () => {
+  const f = btn.dataset.filter;
+  document.querySelectorAll(".chip").forEach(b => b.setAttribute("aria-pressed", String(b === btn)));
+  document.querySelectorAll(".group").forEach(g => { g.hidden = f !== "all" && g.dataset.group !== f; });
+}));
+</script>
+</body>
+</html>
